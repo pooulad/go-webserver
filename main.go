@@ -5,17 +5,18 @@ import (
 	"log"
 	"net/http"
 )
+
 func formHandler(w http.ResponseWriter, r *http.Request) {
 	err := r.ParseForm()
 	if err != nil {
-		fmt.Fprintf(w,"parseform() error :%v",err)
+		fmt.Fprintf(w, "form error :%v \n", err)
 		return
 	}
-	fmt.Fprintf(w,"post request successful")
+	fmt.Fprintf(w, "post request successful")
 	name := r.FormValue("name")
 	address := r.FormValue("address")
-	fmt.Fprintf(w,"name is %s\n",name)
-	fmt.Fprintf(w,"address is %s\n",address)
+	fmt.Fprintf(w, "name is %s\n", name)
+	fmt.Fprintf(w, "address is %s\n", address)
 }
 
 func helloHanler(w http.ResponseWriter, r *http.Request) {
@@ -24,10 +25,10 @@ func helloHanler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if r.Method != "GET" {
-		http.Error(w, "method is not allowd", http.StatusNotFound)
+		http.Error(w, "method is not allowed", http.StatusNotFound)
 		return
 	}
-	fmt.Fprintf(w,"hello here")
+	fmt.Fprintf(w, "hello here")
 }
 
 func main() {
